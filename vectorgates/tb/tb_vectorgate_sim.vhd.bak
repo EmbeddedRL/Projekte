@@ -1,0 +1,121 @@
+-------------------------------------------------------------------------------
+--                                                                      
+--                        Fulladder VHDL Class Example
+--  
+-------------------------------------------------------------------------------
+--                                                                      
+-- ENTITY:         tb_fulladder
+--
+-- FILENAME:       tb_fulladder_sim.vhd
+-- 
+-- ARCHITECTURE:   sim
+-- 
+-- ENGINEER:       Roland Höller
+--
+-- DATE:           30. June 2000
+--
+-- VERSION:        1.0
+--
+-------------------------------------------------------------------------------
+--                                                                      
+-- DESCRIPTION:    This is the architecture of the fulladder testbench
+--                 for the fulladder VHDL class example.
+--
+--
+-------------------------------------------------------------------------------
+--
+-- REFERENCES:     (none)
+--
+-------------------------------------------------------------------------------
+--                                                                      
+-- PACKAGES:       std_logic_1164 (IEEE library)
+--
+-------------------------------------------------------------------------------
+--                                                                      
+-- CHANGES:        Version 2.0 - RH - 30 June 2000
+--
+-------------------------------------------------------------------------------
+
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+architecture sim of tb_vectorgate is
+
+  component vectorgate
+  port (a_i : in std_logic_vector(31 downto 0);      -- input a - 32bit bus
+        b_i : in std_logic_vector(31 downto 0);      -- input b - 32bit bus
+		c_i : in std_logic;							 -- input c - single bit
+		d_i : in std_logic;							 -- input d - single bit
+        d_o : out std_logic_vector(31 downto 0);	 -- output d - 32bit bus
+		h_o : out std_logic_vector(15 downto 0); 	 -- output h - 16bit bus
+		l_o : out std_logic_vector(15 downto 0);	 -- output l - 16bit bus	
+		e_o : out std_logic);     -- sum output
+  end component;
+  
+  -- Declare the signals used stimulating the design's inputs.
+signal a_i : std_logic_vector(31 downto 0);
+signal b_i : std_logic_vector(31 downto 0);
+signal c_i : std_logic;
+signal d_i : std_logic;
+signal d_o : std_logic_vector(31 downto 0);
+signal h_o : std_logic_vector(15 downto 0);
+signal l_o : std_logic_vector(15 downto 0);
+signal e_o : std_logic;
+
+  
+begin
+
+  -- Instantiate the fulladder design for testing
+  i_vectorgate : vectorgate
+  port map              
+    (a_i => a_i,
+     b_i => b_i,
+	 c_i => c_i,
+	 d_i => d_i,
+     d_o => d_o,
+	 h_o => h_o,
+	 l_o => l_o,
+	 e_o => e_o);
+
+  p_test : process
+  begin
+
+    a_i <= "10110001011100001101110101010001";
+    b_i <= "10110110110100110111111001011110";
+	c_i <= '0';
+	d_i <= '0';
+    wait for 200 ns;
+	
+	a_i <= "10100001110111010010011110111000";
+    b_i <= "01101011100100001100011110010101";
+	c_i <= '0';
+	d_i <= '1';
+    wait for 200 ns;
+	
+	a_i <= "10001111011101011000011110011001";
+    b_i <= "01010010011000010110110100010000";
+	c_i <= '1';
+	d_i <= '0';
+    wait for 200 ns;
+	
+	a_i <= "11011101101101110010011111111111";
+    b_i <= "10001000010110000010110100101100";
+	c_i <= '1';
+	d_i <= '1';
+    wait for 200 ns;
+	
+	a_i <= "11011100000001111100000111111111";
+    b_i <= "10011100010110011010110100000100";
+	c_i <= '0';
+	d_i <= '0';
+    wait for 200 ns;
+
+  end process;
+
+end sim;
+
+
+   
+  
+ 
+ 

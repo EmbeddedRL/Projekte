@@ -1,0 +1,9 @@
+a_i: B170DD51
+b_i: B6D37E5E
+
+d_o: B0505C50 	- a_i AND b_i
+d2_o: B050FF5F 	- High Word: a_i AND b_i (upper 16 bit)
+				- Low Word: a_i OR b_i (lower 16 bit)
+
+h_o: B050 - a_i AND b_i (upper 16 bit)
+l_o: FF5F - a_i OR b_i (lower 16 bit)
