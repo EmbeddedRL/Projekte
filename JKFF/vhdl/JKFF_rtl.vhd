@@ -63,7 +63,7 @@ begin
 			elsif j_i = '1' and k_i = '1' then
 				q_buf <= not q_buf;
 			end if;
-			
+			--
 		end if;
 	
 	end process p_JKFF;
