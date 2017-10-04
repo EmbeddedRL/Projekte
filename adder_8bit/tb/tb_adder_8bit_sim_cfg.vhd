@@ -1,24 +1,25 @@
 -------------------------------------------------------------------------------
 --                                                                      
---                        AND 2 data busses VHDL Class Example
+--                        adder_8bit VHDL Class Example
 --  
 -------------------------------------------------------------------------------
 --                                                                      
--- ENTITY:         JKFF
+-- ENTITY:         tb_adder_8bit
 --
--- FILENAME:       JKFF_rtl.vhd
+-- FILENAME:       tb_adder_8bit_sim_cfg.vhd
 -- 
--- ARCHITECTURE:   rtl
+-- ARCHITECTURE:   sim
 -- 
--- ENGINEER:       Reibenwein Lukas
+-- ENGINEER:       Roland Höller
 --
--- DATE:           11. September 2017
+-- DATE:           30. June 2000
 --
 -- VERSION:        1.0
 --
 -------------------------------------------------------------------------------
 --                                                                      
--- DESCRIPTION:    
+-- DESCRIPTION:    This is the configuration for the adder_8bit testbench
+--                 of the adder_8bit VHDL class example.
 --
 --
 -------------------------------------------------------------------------------
@@ -31,40 +32,16 @@
 --
 -------------------------------------------------------------------------------
 --                                                                      
--- CHANGES:        none
+-- CHANGES:        Version 2.0 - RH - 30 June 2000
 --
 -------------------------------------------------------------------------------
-
 library IEEE;
 use IEEE.std_logic_1164.all;
 
-architecture rtl of JKFF is
-
-signal q_buf : std_logic;
-
-begin
-
-	q_o <= q_buf;
-	
-	p_JKFF : process(clk_i,r_i)
-	begin
-		
-		if r_i='1' then --asynchronous reset
-			q_buf <= '0';
-			
-		elsif clk_i = '1' and clk_i'event then
-		
-			if j_i = '0' and k_i = '0' then
-				q_buf <= q_buf;
-			elsif j_i = '1' and k_i = '0' then
-				q_buf <= '1';
-			elsif j_i = '0' and k_i = '1' then
-				q_buf <= '0';
-			elsif j_i = '1' and k_i = '1' then
-				q_buf <= not q_buf;
-			end if;
-			
-		end if;
-	
-	end process p_JKFF;
-end rtl;
+configuration tb_adder_8bit_sim_cfg of tb_adder_8bit is
+  for sim
+    for i_adder_8bit : adder_8bit
+      use configuration work.adder_8bit_rtl_cfg;
+    end for;
+  end for;
+end tb_adder_8bit_sim_cfg;

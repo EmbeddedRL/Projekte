@@ -140,7 +140,7 @@ Ejkff
 w1505725162
 R0
 R1
-Z12 dD:/studium_FH/2017_WS/digitaler_Schaltungsentwurf/projekte/jKFF/msim
+Z12 dD:/studium_FH/2017_WS/digitaler_Schaltungsentwurf/projekte/jkFF/msim
 8../vhdl/JKFF_.vhd
 F../vhdl/JKFF_.vhd
 l0
@@ -149,15 +149,15 @@ V6TM]8kXZFWL4?[@3kG8NF0
 !s100 ^TC>E^5Sb=lO]5:1dI<eE3
 R3
 32
-!s110 1506326411
+!s110 1506930537
 !i10b 1
-!s108 1506326411.000000
+!s108 1506930537.000000
 !s90 -reportprogress|300|../vhdl/JKFF_.vhd|
 !s107 ../vhdl/JKFF_.vhd|
 !i113 1
 R6
 Artl
-w1506326306
+w1506420320
 Z13 DEx4 work 4 jkff 0 22 6TM]8kXZFWL4?[@3kG8NF0
 R0
 R1
@@ -169,9 +169,9 @@ Vl1[TKi2TW<4nM4b>I;Wh23
 !s100 9NUzi@Q2i<d;QoQ;JS?mn1
 R3
 32
-Z14 !s110 1506326412
+Z14 !s110 1506930538
 !i10b 1
-Z15 !s108 1506326412.000000
+Z15 !s108 1506930538.000000
 !s90 -reportprogress|300|../vhdl/JKFF_rtl.vhd|
 !s107 ../vhdl/JKFF_rtl.vhd|
 !i113 1

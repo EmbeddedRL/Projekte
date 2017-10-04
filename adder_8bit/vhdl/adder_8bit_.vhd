@@ -4,9 +4,9 @@
 --  
 -------------------------------------------------------------------------------
 --                                                                      
--- ENTITY:         JKFF
+-- ENTITY:         adder_8bit
 --
--- FILENAME:       JKFF_rtl.vhd
+-- FILENAME:       adder_8bit_.vhd
 -- 
 -- ARCHITECTURE:   rtl
 -- 
@@ -38,33 +38,11 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 
-architecture rtl of JKFF is
+entity adder_8bit is
+  port (data0_i : in std_logic_vector(7 downto 0);  -- input data - 8bit bus
+        data1_i : in std_logic_vector(7 downto 0);	-- input data - 8bit bus
+		sum_o : out std_logic_vector(7 downto 0);	-- output data - 8bit bus
+		cy_o : out std_logic						-- carry out data - 1bit
+		);					
+end adder_8bit;
 
-signal q_buf : std_logic;
-
-begin
-
-	q_o <= q_buf;
-	
-	p_JKFF : process(clk_i,r_i)
-	begin
-		
-		if r_i='1' then --asynchronous reset
-			q_buf <= '0';
-			
-		elsif clk_i = '1' and clk_i'event then
-		
-			if j_i = '0' and k_i = '0' then
-				q_buf <= q_buf;
-			elsif j_i = '1' and k_i = '0' then
-				q_buf <= '1';
-			elsif j_i = '0' and k_i = '1' then
-				q_buf <= '0';
-			elsif j_i = '1' and k_i = '1' then
-				q_buf <= not q_buf;
-			end if;
-			
-		end if;
-	
-	end process p_JKFF;
-end rtl;

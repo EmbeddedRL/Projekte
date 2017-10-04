@@ -4,9 +4,9 @@
 --  
 -------------------------------------------------------------------------------
 --                                                                      
--- ENTITY:         JKFF
+-- ENTITY:         adder_8bit
 --
--- FILENAME:       JKFF_rtl.vhd
+-- FILENAME:       adder_8bit_rtl_cfg.vhd
 -- 
 -- ARCHITECTURE:   rtl
 -- 
@@ -35,36 +35,7 @@
 --
 -------------------------------------------------------------------------------
 
-library IEEE;
-use IEEE.std_logic_1164.all;
-
-architecture rtl of JKFF is
-
-signal q_buf : std_logic;
-
-begin
-
-	q_o <= q_buf;
-	
-	p_JKFF : process(clk_i,r_i)
-	begin
-		
-		if r_i='1' then --asynchronous reset
-			q_buf <= '0';
-			
-		elsif clk_i = '1' and clk_i'event then
-		
-			if j_i = '0' and k_i = '0' then
-				q_buf <= q_buf;
-			elsif j_i = '1' and k_i = '0' then
-				q_buf <= '1';
-			elsif j_i = '0' and k_i = '1' then
-				q_buf <= '0';
-			elsif j_i = '1' and k_i = '1' then
-				q_buf <= not q_buf;
-			end if;
-			
-		end if;
-	
-	end process p_JKFF;
-end rtl;
+configuration adder_8bit_rtl_cfg of adder_8bit is
+  for rtl        -- architecture rtl is used for entity orgate
+  end for;
+end adder_8bit_rtl_cfg;
